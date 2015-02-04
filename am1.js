@@ -37,20 +37,26 @@ function displayBooks(result){
   var results = JSON.parse(result);
     thingy = results; //don't forget to take this out
 
+  var bookHolder = document.getElementById("searchResults");
   for (i in results.items)
   {
     var book = results.items[i];
     var div = document.createElement("div");
     div.className = "bookInfo";
+
     var bookTitle = document.createElement("h2");
     bookTitle.innerHTML = book.volumeInfo.title;
+
     var author = document.createElement("h3");
-    author.innerHTML = book.volumeInfo.authors[0];
+    author.innerHTML = book.volumeInfo.authors;
+    
+    var img = document.createElement("IMG");
+    img.setAttribute("src", book.volumeInfo.imageLinks.thumbnail);
       
-      
-    document.body.appendChild(div);
+    bookHolder.appendChild(div);
     div.appendChild(bookTitle);
     div.appendChild(author);
+    div.appendChild(img);
   }
 }
 
