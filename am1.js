@@ -43,23 +43,27 @@ function displayBooks(result){
     var div = document.createElement("div");
     div.className = "bookInfo";
 
+    var pubDate = document.createElement("div");
+    pubDate.innerHTML = book.volumeInfo.publishedDate.substring(0,4);
+    pubDate.className = "year";
+
     var bookTitle = document.createElement("h2");
     bookTitle.innerHTML = book.volumeInfo.title;
 
     var author = document.createElement("h3");
     author.innerHTML = book.volumeInfo.authors[0];
-    var pubDate = document.createElement("div");
-    pubDate.innerHTML = book.volumeInfo.publishedDate.substring(0,4);
-    pubDate.className = "year";
+
     var img = document.createElement("IMG");
     img.setAttribute("src", book.volumeInfo.imageLinks.thumbnail);
-      
+
+    var para = document.createElement("p");
+    para.innerHTML = book.volumeInfo.description.substring(0, 300).concat("...");
       
     bookHolder.appendChild(div);
     div.appendChild(pubDate);
     div.appendChild(bookTitle);
     div.appendChild(author);
-      div.appendChild(img);
-
+    div.appendChild(img);
+    div.appendChild(para);
   }
 }
