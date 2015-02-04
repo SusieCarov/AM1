@@ -4,12 +4,13 @@ button.onclick = function () {
   var input = document.querySelector("#search");
   console.log("Your search phrase is: ", input.value);
   input = input.value;
-	
-	var baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
-	var searchTerm = encodeURI(input); // this later needs to get the value from input
-	var url = baseURL + searchTerm;
-	
-	ajaxRequest(url);
+	if (input) {
+		var baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
+		var searchTerm = encodeURI(input); // this later needs to get the value from input
+		var url = baseURL + searchTerm;
+
+		ajaxRequest(url);
+	}
 }
 
 
@@ -32,6 +33,15 @@ function displayBooks(result){
   alert("got results: " + result.length);
   var results = JSON.parse(result);
   console.log(results);
+	
+	var div = document.createElement("div");
+div.style.width = "100px";
+div.style.height = "100px";
+div.style.background = "red";
+div.style.color = "white";
+div.innerHTML = "Hello";
+
+document.body.appendChild(div);
 }
 
 // invoke the function
