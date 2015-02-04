@@ -33,7 +33,6 @@ function ajaxRequest(url) {
 
 // Temporary function, to see that the request works
 function displayBooks(result){
-  alert("got results: " + result.length);
   var results = JSON.parse(result);
   thingy = results.items[0]; //don't forget to take this out
 
