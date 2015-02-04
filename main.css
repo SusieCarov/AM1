@@ -1,0 +1,52 @@
+h1 {
+    text-align: center;
+    font-family: "Courier New";
+    padding-top: 100px;
+}
+
+#searchInput {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+#searchResults {
+    text-align: center;
+}
+.bookInfo {
+    margin: 25px;
+    width: 25%;
+    display: inline-block;
+    border-style: solid;
+    border-width: medium;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.year {
+    color: white;
+    background: green;
+    width: 125px;
+    transform: rotate(-45deg);
+    position: relative;
+    top: 20px;
+    right: 40px;
+}
+
+img {
+    width: 50%;
+}
+
+h2 {
+    text-decoration: underline;
+}
+
+h3 {
+    color: orange;
+    font-style: italic;
+}
+
+p {
+    width: 90%;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 15px;
+}
