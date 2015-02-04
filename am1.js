@@ -54,7 +54,11 @@ function displayBooks(result){
     author.innerHTML = book.volumeInfo.authors[0];
 
     var img = document.createElement("IMG");
-    img.setAttribute("src", book.volumeInfo.imageLinks.thumbnail);
+    if (book.volumeInfo.imageLinks.thumbnail) {
+      img.setAttribute("src", book.volumeInfo.imageLinks.thumbnail);
+    } else {
+      img.setAttribute("src", "placeholder.jpg");
+    }
 
     var para = document.createElement("p");
     para.innerHTML = book.volumeInfo.description.substring(0,300).concat("...");
