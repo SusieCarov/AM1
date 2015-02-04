@@ -1,4 +1,7 @@
 var input;
+var thingy;
+
+
 var button = document.querySelector("button");
 button.onclick = function () {
   var input = document.querySelector("#search");
@@ -32,16 +35,23 @@ function ajaxRequest(url) {
 function displayBooks(result){
   alert("got results: " + result.length);
   var results = JSON.parse(result);
-  console.log(results);
-	
-	var div = document.createElement("div");
-div.style.width = "100px";
-div.style.height = "100px";
-div.style.background = "red";
-div.style.color = "white";
-div.innerHTML = "Hello";
+    thingy = results; //don't forget to take this out
 
-document.body.appendChild(div);
+  for (i in results.items)
+  {
+    var book = results.items[i];
+    var div = document.createElement("div");
+    div.className = "bookInfo";
+    var bookTitle = document.createElement("h2");
+    bookTitle.innerHTML = book.volumeInfo.title;
+    var author = document.createElement("h3");
+    author.innerHTML = book.volumeInfo.authors[0];
+      
+      
+    document.body.appendChild(div);
+    div.appendChild(bookTitle);
+    div.appendChild(author);
+  }
 }
 
 // invoke the function
