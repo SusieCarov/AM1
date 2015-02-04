@@ -1,11 +1,13 @@
 var input;
 var thingy;
+var foodHolder;
 
 var button = document.querySelector("button");
 button.onclick = function () {
   var input = document.querySelector("#search");
   input = input.value;
 	if (input) {
+    //CHANGE
 		var baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
 		var searchTerm = encodeURI(input); // this later needs to get the value from input
 		var url = baseURL + searchTerm;
@@ -21,7 +23,7 @@ function ajaxRequest(url) {
   request.onload = function() {
     if (request.status == 200) {
       searchResults = (request.responseText);
-      displayBooks(searchResults); // displayBooks is your function
+      displayRestaurants(searchResults); // displayRestaurants is your function
     }
   };
   
@@ -29,16 +31,18 @@ function ajaxRequest(url) {
 }
 
 // Temporary function, to see that the request works
-function displayBooks(result){
+function displayRestaurants(result){
   var results = JSON.parse(result);
   thingy = results.items[0]; //don't forget to take this out
 
-  if(bookHolder) {
-    bookHolder.innerHTML = "";
+  if(foodHolder) {
+    foodHolder.innerHTML = "";
   }
-  bookHolder = document.getElementById("searchResults");
+  foodHolder = document.getElementById("searchResults");
   for (i in results.items)
   {
+
+    //CHANGE
     var book = results.items[i];
     var div = document.createElement("div");
     div.className = "bookInfo";
