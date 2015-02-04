@@ -35,30 +35,32 @@ function ajaxRequest(url) {
 function displayBooks(result){
   alert("got results: " + result.length);
   var results = JSON.parse(result);
-    thingy = results.items[0]; //don't forget to take this out
+  thingy = results.items[0]; //don't forget to take this out
+
   var bookHolder = document.getElementById("searchResults");
   for (i in results.items)
   {
     var book = results.items[i];
     var div = document.createElement("div");
     div.className = "bookInfo";
+
     var bookTitle = document.createElement("h2");
     bookTitle.innerHTML = book.volumeInfo.title;
+
     var author = document.createElement("h3");
     author.innerHTML = book.volumeInfo.authors[0];
     var pubDate = document.createElement("div");
     pubDate.innerHTML = book.volumeInfo.publishedDate.substring(0,4);
     pubDate.className = "year";
+    var img = document.createElement("IMG");
+    img.setAttribute("src", book.volumeInfo.imageLinks.thumbnail);
       
       
     bookHolder.appendChild(div);
     div.appendChild(pubDate);
     div.appendChild(bookTitle);
     div.appendChild(author);
-      
+      div.appendChild(img);
+
   }
 }
-
-// invoke the function
-
-
