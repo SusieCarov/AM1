@@ -1,11 +1,10 @@
 var input;
-var thingy;
+var thingy; //take out later
 
 
 var button = document.querySelector("button");
 button.onclick = function () {
   var input = document.querySelector("#search");
-  console.log("Your search phrase is: ", input.value);
   input = input.value;
 	if (input) {
 		var baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
