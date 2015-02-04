@@ -1,6 +1,5 @@
 var input;
-var thingy; //take out later
-
+var thingy;
 
 var button = document.querySelector("button");
 button.onclick = function () {
@@ -15,15 +14,14 @@ button.onclick = function () {
 	}
 }
 
-
-
 function ajaxRequest(url) {
   var request = new XMLHttpRequest(); 
   request.open("GET", url); 
   
   request.onload = function() {
     if (request.status == 200) {
-      displayBooks(request.responseText); // displayBooks is your function
+      searchResults = (request.responseText);
+      displayBooks(searchResults); // displayBooks is your function
     }
   };
   
@@ -35,7 +33,10 @@ function displayBooks(result){
   var results = JSON.parse(result);
   thingy = results.items[0]; //don't forget to take this out
 
-  var bookHolder = document.getElementById("searchResults");
+  if(bookHolder) {
+    bookHolder.innerHTML = "";
+  }
+  bookHolder = document.getElementById("searchResults");
   for (i in results.items)
   {
     var book = results.items[i];
@@ -56,8 +57,8 @@ function displayBooks(result){
     img.setAttribute("src", book.volumeInfo.imageLinks.thumbnail);
 
     var para = document.createElement("p");
-    para.innerHTML = book.volumeInfo.description.substring(0, 300).concat("...");
-      
+    para.innerHTML = book.volumeInfo.description.substring(0,300).concat("...");
+
     bookHolder.appendChild(div);
     div.appendChild(pubDate);
     div.appendChild(bookTitle);
@@ -65,4 +66,5 @@ function displayBooks(result){
     div.appendChild(img);
     div.appendChild(para);
   }
+
 }
