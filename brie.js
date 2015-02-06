@@ -23,11 +23,27 @@ locationButton.onclick = function () {
     var url = baseURL + "&locality=" + city
     url += "&region=" + state
     url += "&callback=displayRestaurants"
-    ajaxRequest(url);
+    notAjaxRequest(url);
 
 	}
   console.log("hello");
 }
+
+function notAjaxRequest(url) {
+    
+    var newScriptElement = document.createElement("script");
+	newScriptElement.setAttribute("src", requestURL);
+	newScriptElement.setAttribute("id", "jsonp");
+	var oldScriptElement = document.getElementById("jsonp");
+	var head = document.getElementsByTagName("head")[0];
+	if (oldScriptElement == null) {
+		head.appendChild(newScriptElement);
+	}
+	else {
+		head.replaceChild(newScriptElement, oldScriptElement);
+	}
+}
+
 
 function ajaxRequest(url) {
   var request = new XMLHttpRequest(); 
