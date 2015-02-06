@@ -59,6 +59,7 @@ function displayVenue(result){
     var phoneNum = document.createElement("div");
     phoneNum.innerHTML = venue.objects[i].phone;
     phoneNum.className = "phone number";
+    console.log(phoneNum.innerHTML);
 
     var name = document.createElement("h2");
     name.innerHTML = venue.objects[i].name;
