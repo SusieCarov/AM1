@@ -17,7 +17,6 @@ locationButton.onclick = function () {
   input = input.value;
   console.log(input);
 	if (input) {
-
     var location = input.split(", ")
     var city = encodeURI(location[0])
     var state = encodeURI(location[1])
@@ -31,7 +30,6 @@ locationButton.onclick = function () {
 }
     
 function jsonpRequest(requestURL) {
-
   var newScriptElement = document.createElement("script");
   newScriptElement.setAttribute("src", requestURL);
   newScriptElement.setAttribute("id", "jsonp");
@@ -43,6 +41,20 @@ function jsonpRequest(requestURL) {
   else {
     head.replaceChild(newScriptElement, oldScriptElement);
   }
+
+function notAjaxRequest(url) {
+    
+    var newScriptElement = document.createElement("script");
+	newScriptElement.setAttribute("src", requestURL);
+	newScriptElement.setAttribute("id", "jsonp");
+	var oldScriptElement = document.getElementById("jsonp");
+	var head = document.getElementsByTagName("head")[0];
+	if (oldScriptElement == null) {
+		head.appendChild(newScriptElement);
+	}
+	else {
+		head.replaceChild(newScriptElement, oldScriptElement);
+	}
 }
 
 // Temporary function, to see that the request works
