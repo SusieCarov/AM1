@@ -6,9 +6,9 @@ button.onclick = function () {
   var input = document.querySelector("#search");
   input = input.value;
 	if (input) {
-		var baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
+		var baseURL = "https://api.locu.com/v1_0/venue/search/?name=Italian&api_key=4563ba26ae40bfc14b6f866baaaa038e6c927df7";
 		var searchTerm = encodeURI(input); // this later needs to get the value from input
-		var url = baseURL + searchTerm;
+		var url = baseURL;
 
 		ajaxRequest(url);
 	}
