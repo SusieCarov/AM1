@@ -17,7 +17,7 @@ locationButton.onclick = function () {
   input = input.value;
   console.log(input);
 	if (input) {
-<<<<<<< HEAD
+
     var location = input.split(", ")
     var city = encodeURI(location[0])
     var state = encodeURI(location[1])
@@ -25,14 +25,7 @@ locationButton.onclick = function () {
     url += "&region=" + state
     url += "&callback=displayRestaurants"
     ajaxRequest(url);
-=======
-		var baseURL = "https://api.locu.com/v1_0/venue/search/?name=Italian&api_key=4563ba26ae40bfc14b6f866baaaa038e6c927df7";
-		var searchTerm = encodeURI(input); // this later needs to get the value from input
-		var url = baseURL;
 
-        console.log("hello");
-		////ajaxRequest(url);
->>>>>>> FETCH_HEAD
 	}
   console.log("hello");
 }
@@ -73,12 +66,15 @@ function displayVenue(result){
 
     var name = document.createElement("h2");
     name.innerHTML = venue.objects[i].name;
+    console.log(name.innerHTML);
 
     var address = document.createElement("h3");
     address.innerHTML = venue.objects[i].street_address;
+    console.log(address.innerHTML);
 
     var website = document.createElement("h3");
     website.innerHTML = venue.objects[i].website_url;
+    console.log(website.innerHTML);
 
     venueHolder.appendChild(div);
     div.appendChild(phoneNum);
