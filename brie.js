@@ -10,8 +10,10 @@ button.onclick = function () {
 		var searchTerm = encodeURI(input); // this later needs to get the value from input
 		var url = baseURL;
 
-		ajaxRequest(url);
+        console.log("hello");
+		////ajaxRequest(url);
 	}
+  console.log("hello");
 }
 
 function ajaxRequest(url) {
