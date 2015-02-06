@@ -1,6 +1,6 @@
 var input;
 var thingy;
-var foodHolder;
+var venueHolder;
 var apiKey = "4563ba26ae40bfc14b6f866baaaa038e6c927df7";
 var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key=" 
             + apiKey 
@@ -23,57 +23,59 @@ locationButton.onclick = function () {
     var state = encodeURI(location[1])
     var url = baseURL + "&locality=" + city
     url += "&region=" + state
-    url += "&callback=displayRestaurants"
-    ajaxRequest(url);
+    url += "&callback=displayVenue"
+    jsonpRequest(url);
 
 	}
   console.log("hello");
 }
+    
+function jsonpRequest(requestURL) {
 
-function ajaxRequest(url) {
-  var request = new XMLHttpRequest(); 
-  request.open("GET", url); 
-  
-  request.onload = function() {
-    if (request.status == 200) {
-      searchResults = (request.responseText);
-      displayVenue(searchResults); // displayVenue is your function
-    }
-  };
-  
-  request.send(null); 
+  var newScriptElement = document.createElement("script");
+  newScriptElement.setAttribute("src", requestURL);
+  newScriptElement.setAttribute("id", "jsonp");
+  var oldScriptElement = document.getElementById("jsonp");
+  var head = document.getElementsByTagName("head")[0];
+  if (oldScriptElement == null) {
+    head.appendChild(newScriptElement);
+  }
+  else {
+    head.replaceChild(newScriptElement, oldScriptElement);
+  }
 }
 
 // Temporary function, to see that the request works
-function displayVenue(result){
-  var results = JSON.parse(result);
-  thingy = results.items[0]; //don't forget to take this out
+var ourResult;
+function displayVenue(results){
+  ourResult = results;
 
   if(venueHolder) {
     venueHolder.innerHTML = "";
   }
   venueHolder = document.getElementById("searchResults");
-  for (i in results.items)
+  for (i in results.objects)
   {
-    var venue = results.items[i];
+    console.log("inside for loop");
+    var venue = results.objects[i];
     var div = document.createElement("div");
     div.className = "Venue Info";
 
     var phoneNum = document.createElement("div");
-    phoneNum.innerHTML = venue.objects[i].phone;
+    phoneNum.innerHTML = venue.phone;
     phoneNum.className = "phone number";
     console.log(phoneNum.innerHTML);
 
     var name = document.createElement("h2");
-    name.innerHTML = venue.objects[i].name;
+    name.innerHTML = venue.name;
     console.log(name.innerHTML);
 
     var address = document.createElement("h3");
-    address.innerHTML = venue.objects[i].street_address;
+    address.innerHTML = venue.street_address;
     console.log(address.innerHTML);
 
     var website = document.createElement("h3");
-    website.innerHTML = venue.objects[i].website_url;
+    website.innerHTML = venue.website_url;
     console.log(website.innerHTML);
 
     venueHolder.appendChild(div);
