@@ -1,18 +1,29 @@
 var input;
 var thingy;
 var foodHolder;
+var apiKey = "4563ba26ae40bfc14b6f866baaaa038e6c927df7";
+var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key=" 
+            + apiKey 
+            + "&category=restaurant"; //category is always restaurant
 
-var button = document.querySelector("button");
-button.onclick = function () {
+var buttons = document.querySelectorAll("button");
+var locationButton = buttons[0];
+var priceButton = buttons[1];
+var cuisineButton = buttons[2];
+
+
+locationButton.onclick = function () {
   var input = document.querySelector("#search");
   input = input.value;
+  console.log(input);
 	if (input) {
-    //CHANGE
-		var baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
-		var searchTerm = encodeURI(input); // this later needs to get the value from input
-		var url = baseURL + searchTerm;
-
-		ajaxRequest(url);
+    var location = input.split(", ")
+    var city = encodeURI(location[0])
+    var state = encodeURI(location[1])
+    var url = baseURL + "&locality=" + city
+    url += "&region=" + state
+    url += "&callback=displayRestaurants"
+    ajaxRequest(url);
 	}
 }
 
@@ -23,7 +34,7 @@ function ajaxRequest(url) {
   request.onload = function() {
     if (request.status == 200) {
       searchResults = (request.responseText);
-      displayRestaurants(searchResults); // displayRestaurants is your function
+      displayVenue(searchResults); // displayVenue is your function
     }
   };
   
@@ -31,48 +42,38 @@ function ajaxRequest(url) {
 }
 
 // Temporary function, to see that the request works
-function displayRestaurants(result){
+function displayVenue(result){
   var results = JSON.parse(result);
   thingy = results.items[0]; //don't forget to take this out
 
-  if(foodHolder) {
-    foodHolder.innerHTML = "";
+  if(venueHolder) {
+    venueHolder.innerHTML = "";
   }
-  foodHolder = document.getElementById("searchResults");
+  venueHolder = document.getElementById("searchResults");
   for (i in results.items)
   {
-
-    //CHANGE
-    var book = results.items[i];
+    var venue = results.items[i];
     var div = document.createElement("div");
-    div.className = "bookInfo";
+    div.className = "Venue Info";
 
-    var pubDate = document.createElement("div");
-    pubDate.innerHTML = book.volumeInfo.publishedDate.substring(0,4);
-    pubDate.className = "year";
+    var phoneNum = document.createElement("div");
+    phoneNum.innerHTML = venue.objects[i].phone;
+    phoneNum.className = "phone number";
 
-    var bookTitle = document.createElement("h2");
-    bookTitle.innerHTML = book.volumeInfo.title;
+    var name = document.createElement("h2");
+    name.innerHTML = venue.objects[i].name;
 
-    var author = document.createElement("h3");
-    author.innerHTML = book.volumeInfo.authors[0];
+    var address = document.createElement("h3");
+    address.innerHTML = venue.objects[i].street_address;
 
-    var img = document.createElement("IMG");
-    if (book.volumeInfo.imageLinks.thumbnail) {
-      img.setAttribute("src", book.volumeInfo.imageLinks.thumbnail);
-    } else {
-      img.setAttribute("src", "placeholder.jpg");
-    }
+    var website = document.createElement("h3");
+    website.innerHTML = venue.objects[i].website_url;
 
-    var para = document.createElement("p");
-    para.innerHTML = book.volumeInfo.description.substring(0,300).concat("...");
-
-    bookHolder.appendChild(div);
-    div.appendChild(pubDate);
-    div.appendChild(bookTitle);
-    div.appendChild(author);
-    div.appendChild(img);
-    div.appendChild(para);
+    venueHolder.appendChild(div);
+    div.appendChild(phoneNum);
+    div.appendChild(name);
+    div.appendChild(address);
+    div.appendChild(website);
   }
 
 }
