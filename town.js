@@ -88,7 +88,7 @@ function displayVenue(results){
   //if no results, then display a sad little paragraph telling us the news
   if (results.objects.length == 0) {
     var para = document.createElement("p");
-    p.innerHTML = "No Results";
+    para.innerHTML = "No Results";
     venueHolder.appendChild(para);
   }
 
