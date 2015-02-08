@@ -1,0 +1,59 @@
+body {
+    text-align: center;
+}
+
+h1 {
+    /* Used for search box titile */
+    font-family: "Courier New";
+    padding-top: 100px;
+}
+
+h2 {
+    /* Used for book title */
+    text-decoration: underline;
+    height: 2rem; /* Makes one-line and two-line long titles take up same space. */
+}
+
+h3 {
+    /*Used for author name */
+    color: orange;
+    font-style: italic;
+}
+
+img {
+    width: 90%;
+    height: 18rem;
+}
+
+p {
+    width: 90%;
+    font-size: 16px;
+    text-align: left;
+    padding-left: 15px;
+    min-height: 7.8rem; /* Makes all book-info sections the same height 
+                            (unless you shrink your screen too small */
+}
+
+#searchInput {
+    padding-bottom: 30px;
+}
+
+.bookInfo {
+    margin: 25px;
+    width: 20%;
+    display: inline-table;
+    border-style: solid;
+    border-width: medium;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.year {
+    color: white;
+    background: green;
+    width: 100px;
+    transform: rotate(-45deg);
+    position: relative;
+    top: 0.8rem;
+    right: 2rem;
+}
+
