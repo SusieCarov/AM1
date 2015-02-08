@@ -1,13 +1,23 @@
+/*
+    FILE NAME: booksearch.js
+    DATE MODIFIED: 2.8.15
+    PURPOSE: Provides search functionality to the booksearch.html
+        Takes in user search input and searches the google book api for 10 results.
+        It than takes these results and inserts them into the html page.
+*/
+
 var button = document.querySelector("button");
+
+//Performs search using the input when the search button is clicked.
 button.onclick = function () {
   var input = document.querySelector("#search");
   input = input.value;
 	if (input) {
 		var baseURL = "https://www.googleapis.com/books/v1/volumes?q=";
-		var searchTerm = encodeURI(input); 
-		var url = baseURL + searchTerm;
+		var searchTerm = encodeURI(input);  //takes in user input
+		var url = baseURL + searchTerm; //combines the basic url with user search terms
 
-		ajaxRequest(url);
+		ajaxRequest(url); //makes request to google for results
 	}
 }
 
