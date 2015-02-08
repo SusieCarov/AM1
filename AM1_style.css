@@ -22,9 +22,7 @@ h1 {
       padding: 7px; /* set space between content and border */
       float: left;
       text-align:center;
-    
     } 
-
 
 img {
     width: 90%;
@@ -33,7 +31,6 @@ img {
 }
 
 h2 {
-/*    text-align:center;*/
     text-decoration: underline;
     color: #6E6772;
     
