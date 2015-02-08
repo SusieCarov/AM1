@@ -1,4 +1,5 @@
-var venueHolder = 0;
+var venueHolder;
+
 var apiKey = "4563ba26ae40bfc14b6f866baaaa038e6c927df7";
 var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key=" 
             + apiKey;
@@ -44,13 +45,15 @@ entriesItems[4].onclick = function () {
 }
 
 function categoryRequest(category) {
-    var url = urlWithLocation;
-    url += "&category=" + category + "&callback=displayVenue";
+    var url = urlWithLocation.split("&l");
+    url = url[0] + "&category=" + encodeURI(category) + "&l" + url[1] + "&callback=displayVenue";
+    console.log("category url: " + url);
     jsonpRequest(url);   
 }
   
 
 function jsonpRequest(requestURL) {
+    
   var newScriptElement = document.createElement("script");
   newScriptElement.setAttribute("src", requestURL);
   newScriptElement.setAttribute("id", "jsonp");
@@ -68,7 +71,7 @@ function jsonpRequest(requestURL) {
 var ourResult;
 function displayVenue(results){
   ourResult = results;
-
+  
   if(venueHolder) {
     venueHolder.innerHTML = "";
   }
@@ -85,9 +88,9 @@ function displayVenue(results){
     phoneNum.className = "phone number";
     console.log(phoneNum.innerHTML);
 
-    var name = document.createElement("h2");
-    name.innerHTML = venue.name;
-    console.log(name.innerHTML);
+    var venueName = document.createElement("h2");
+    venueName.innerHTML = venue.name;
+    console.log(venueName.innerHTML);
 
     var address = document.createElement("h3");
     address.innerHTML = venue.street_address;
@@ -99,7 +102,8 @@ function displayVenue(results){
 
     venueHolder.appendChild(div);
     div.appendChild(phoneNum);
-    div.appendChild(name);
+      console.log("did phone");
+    div.appendChild(venueName);
     div.appendChild(address);
     div.appendChild(website);
   }
