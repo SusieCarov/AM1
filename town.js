@@ -59,7 +59,7 @@ function categoryRequest(category) {
     jsonpRequest(url);
 }
   
-//not an ajax, but jsonp request for Locu
+//not an ajax, but jsonp request for Locu. Code taken from Eni
 function jsonpRequest(requestURL) {
   var newScriptElement = document.createElement("script");
   newScriptElement.setAttribute("src", requestURL);
@@ -84,6 +84,14 @@ function displayVenue(results){
     venueHolder.innerHTML = "";
   }
   venueHolder = document.getElementById("searchResults");
+
+  //if no results, then display a sad little paragraph telling us the news
+  if (results.objects.length == 0) {
+    var para = document.createElement("p");
+    p.innerHTML = "No Results";
+    venueHolder.appendChild(para);
+  }
+
   for (i in results.objects)
   {
     //venue object taken from api
