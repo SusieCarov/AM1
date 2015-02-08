@@ -6,14 +6,13 @@ var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key="
             + apiKey;
 var urlWithLocation = baseURL + "&locality=wellesley&region=ma";
 console.log("hi");
-var buttons = document.querySelectorAll("button");
-var locationButton = buttons[0];
-console.log("got to bottom of buttons");
+var locationButton = document.querySelector("button");
+var entriesItems = document.querySelectorAll("entriesItems");
+console.log(entriesItems);
 
 locationButton.onclick = function () {
   var input = document.querySelector("#search");
   input = input.value;
-  console.log(input);
 	if (input) {
     var location = input.split(", ");
     var city = encodeURI(location[0]);
@@ -23,29 +22,27 @@ locationButton.onclick = function () {
     urlWithLocation = url;
     url += "&callback=displayVenue";
     jsonpRequest(url);
-
 	}
 }
 
-
 //recreationButton, beautyButton, laundryButton, Fashion, restaurant, bookstore
-buttons[1].onclick = function () {
+entriesItems[0].onclick = function () {
   categoryRequest("recreation");
 }
 
-buttons[2].onclick = function () {
+entriesItems[1].onclick = function () {
   categoryRequest("beauty");
 }
 
-buttons[3].onclick = function () {
+entriesItems[2].onclick = function () {
   categoryRequest("laundry");
 }
 
-buttons[4].onclick = function () {
+entriesItems[3].onclick = function () {
   categoryRequest("fashion");
 }
 
-buttons[5].onclick = function () {
+entriesItems[4].onclick = function () {
   categoryRequest("bookstore");
 }
 
@@ -68,20 +65,6 @@ function jsonpRequest(requestURL) {
   else {
     head.replaceChild(newScriptElement, oldScriptElement);
   }
-
-function notAjaxRequest(url) {
-    
-    var newScriptElement = document.createElement("script");
-	newScriptElement.setAttribute("src", requestURL);
-	newScriptElement.setAttribute("id", "jsonp");
-	var oldScriptElement = document.getElementById("jsonp");
-	var head = document.getElementsByTagName("head")[0];
-	if (oldScriptElement == null) {
-		head.appendChild(newScriptElement);
-	}
-	else {
-		head.replaceChild(newScriptElement, oldScriptElement);
-	}
 }
 
 // Temporary function, to see that the request works
