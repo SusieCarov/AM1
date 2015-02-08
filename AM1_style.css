@@ -4,7 +4,7 @@ body {
         max-width: 900px;
         font-family: "Courier New";
         line-height: 1.5em;
-        background-image: url("food.png");
+        background-image: url("brickwall.png");
         text-align:center; 
     }
 
@@ -23,10 +23,9 @@ h1 {
       float: left;
       text-align:center;
     
-#texbook{
-    float:right; 
-} 
     } 
+
+
 img {
     width: 90%;
     border-radius: 90%
