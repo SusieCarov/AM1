@@ -1,32 +1,32 @@
-var input;
-var thingy;
-var venueHolder;
+console.log("line 1");
+var venueHolder = 0;
+console.log("line 2");
 var apiKey = "4563ba26ae40bfc14b6f866baaaa038e6c927df7";
 var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key=" 
-            + apiKey; //category actually won't be always restaurant!
-var urlWithLocation;
-
+            + apiKey;
+var urlWithLocation = baseURL + "&locality=wellesley&region=ma";
+console.log("hi");
 var buttons = document.querySelectorAll("button");
 var locationButton = buttons[0];
-
+console.log("got to bottom of buttons");
 
 locationButton.onclick = function () {
   var input = document.querySelector("#search");
   input = input.value;
   console.log(input);
 	if (input) {
-    var location = input.split(", ")
-    var city = encodeURI(location[0])
-    var state = encodeURI(location[1])
-    var url = baseURL + "&locality=" + city
-    url += "&region=" + state
-    url += "&callback=displayVenue"
+    var location = input.split(", ");
+    var city = encodeURI(location[0]);
+    var state = encodeURI(location[1]);
+    var url = baseURL + "&locality=" + city;
+    url += "&region=" + state;
+    urlWithLocation = url;
+    url += "&callback=displayVenue";
     jsonpRequest(url);
 
 	}
-  console.log("hello");
-  urlWithLocation = url;
 }
+
 
 //recreationButton, beautyButton, laundryButton, Fashion, restaurant, bookstore
 buttons[1].onclick = function () {
@@ -50,12 +50,11 @@ buttons[5].onclick = function () {
 }
 
 function categoryRequest(category) {
-  var url = urlWithLocation.split("&c");
-  url = url[0];
-  url += "&category=" + category;
-  url += "&callback=displayVenue";
-  jsonpRequest(url[0]);
-} 
+    var url = urlWithLocation;
+    url += "&category=" + category + "&callback=displayVenue";
+    jsonpRequest(url);   
+}
+  
 
 function jsonpRequest(requestURL) {
   var newScriptElement = document.createElement("script");
