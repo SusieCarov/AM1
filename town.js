@@ -96,13 +96,13 @@ function displayVenue(results){
   {
     //venue object taken from api
     var venue = results.objects[i];
-    var div = document.createElement("div");
-    div.className = "Venue Info";
+    var div = document.createElement('div');
+    div.className = "venueInfo";
 
     //venue's phone number
     var phoneNum = document.createElement("div");
     phoneNum.innerHTML = venue.phone;
-    phoneNum.className = "phone number";
+    phoneNum.className = "phoneNumber";
 
     //venue's name
     var venueName = document.createElement("h2");
@@ -113,13 +113,14 @@ function displayVenue(results){
     address.innerHTML = venue.street_address;
 
     //venue's website
-    var website = document.createElement("h3");
+    var website = document.createElement("a");
     website.innerHTML = venue.website_url;
+    website.href = venue.website_url;
 
     //append divs of a venue's info to large venue div holder
     venueHolder.appendChild(div);
-    div.appendChild(phoneNum);
     div.appendChild(venueName);
+    div.appendChild(phoneNum);
     div.appendChild(address);
     div.appendChild(website);
   }
