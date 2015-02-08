@@ -104,7 +104,7 @@ function displayVenue(results){
     var website = document.createElement("h3");
     website.innerHTML = venue.website_url;
 
-    //append divs to large div
+    //append divs of a venue's info to large venue div holder
     venueHolder.appendChild(div);
     div.appendChild(phoneNum);
     div.appendChild(venueName);
