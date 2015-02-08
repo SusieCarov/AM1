@@ -84,6 +84,7 @@ function displayVenue(results){
     venueHolder.innerHTML = "";
   }
   venueHolder = document.getElementById("searchResults");
+    
   for (i in results.objects)
   {
     //venue object taken from api
@@ -105,8 +106,7 @@ function displayVenue(results){
     address.innerHTML = venue.street_address;
 
     //venue's website
-    var website = document.createElement("h3");
-
+    var website = document.createElement("a");
     website.innerHTML = venue.website_url;
     website.href = venue.website_url;
 
