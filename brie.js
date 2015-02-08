@@ -4,7 +4,7 @@ var venueHolder;
 var apiKey = "4563ba26ae40bfc14b6f866baaaa038e6c927df7";
 var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key=" 
             + apiKey 
-            + "&category=restaurant"; //category is always restaurant
+            + "&category=restaurant"; //category actually won't be always restaurant!
 
 var buttons = document.querySelectorAll("button");
 var locationButton = buttons[0];
