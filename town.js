@@ -6,7 +6,6 @@ var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key="
 var urlWithLocation = baseURL + "&locality=wellesley&region=ma";
 var locationButton = document.querySelector("button");
 var entriesItems = document.querySelectorAll("div.entriesItems");
-console.log(entriesItems);
 
 locationButton.onclick = function () {
   var input = document.querySelector("#search");
@@ -19,6 +18,7 @@ locationButton.onclick = function () {
     url += "&region=" + state;
     urlWithLocation = url;
     url += "&callback=displayVenue";
+    console.log(url);
     jsonpRequest(url);
 	}
 }
