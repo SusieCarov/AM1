@@ -89,6 +89,7 @@ function displayVenue(results){
   if (results.objects.length == 0) {
     var para = document.createElement("p");
     para.innerHTML = "No Results";
+    para.className = "noResults";
     venueHolder.appendChild(para);
   }
 
