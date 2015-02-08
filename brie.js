@@ -51,8 +51,9 @@ buttons[5].onclick = function () {
 
 function categoryRequest(category) {
   var url = urlWithLocation.split("&c");
-  url[0] += "&category=" + category;
-  url[0] += "*callback=displayVenue";
+  url = url[0];
+  url += "&category=" + category;
+  url += "&callback=displayVenue";
   jsonpRequest(url[0]);
 } 
 
