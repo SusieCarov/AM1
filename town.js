@@ -5,10 +5,16 @@
 // of our location input button, and our category buttons.
 //
 
+
+//global variables
 var venueHolder;
+
 var apiKey = "4563ba26ae40bfc14b6f866baaaa038e6c927df7";
 var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key=" + apiKey;
 var urlWithLocation = baseURL + "&locality=wellesley&region=ma";
+
+//find location button and the divs with class "entriesItems" - these will
+//be used to place a query with onclick functions
 var locationButton = document.querySelector("button");
 var entriesItems = document.querySelectorAll("div.entriesItems");
 
@@ -17,12 +23,12 @@ locationButton.onclick = function () {
   var input = document.querySelector("#search");
   input = input.value;
 	if (input) {
-    var location = input.split(", ");
+    var location = input.split(", ");//split city and state by a comma and space
     var city = encodeURI(location[0]);
     var state = encodeURI(location[1]);
     var url = baseURL + "&locality=" + city + "&region=" + state;
     urlWithLocation = url;
-    url += "&callback=displayVenue";
+    url += "&callback=displayVenue";//callback to displayVenue function
     jsonpRequest(url);
 	}
 }
@@ -46,14 +52,15 @@ entriesItems[3].onclick = function () {
 }
 
 function categoryRequest(category) {
-    var url = urlWithLocation.split("&l");
-    url = url[0] + "&category=" + encodeURI(category) + "&l" + url[1] + "&callback=displayVenue";
-    jsonpRequest(url);   
+    var url = urlWithLocation.split("&l");//have to insert category before locality,
+    //so we splice the urlWithLocation at the location query in the url
+    url = url[0] + "&category=" + encodeURI(category) 
+          + "&l" + url[1] + "&callback=displayVenue"; //insert category, and reattach parts of query, add callback
+    jsonpRequest(url);
 }
   
-
+//not an ajax, but jsonp request for Locu
 function jsonpRequest(requestURL) {
-    
   var newScriptElement = document.createElement("script");
   newScriptElement.setAttribute("src", requestURL);
   newScriptElement.setAttribute("id", "jsonp");
@@ -67,35 +74,43 @@ function jsonpRequest(requestURL) {
   }
 }
 
+//populate divs according to api results
 var ourResult;
 function displayVenue(results){
   ourResult = results;
-  
+
+  //if something is already populating venueHolder, ditch everything and start over
   if(venueHolder) {
     venueHolder.innerHTML = "";
   }
   venueHolder = document.getElementById("searchResults");
   for (i in results.objects)
   {
+    //venue object taken from api
     var venue = results.objects[i];
     var div = document.createElement('div');
     div.className = "venueInfo";
 
-    var phoneNum = document.createElement('div');
+    //venue's phone number
+    var phoneNum = document.createElement("div");
     phoneNum.innerHTML = venue.phone;
     phoneNum.className = "phoneNumber";
 
-    var venueName = document.createElement('h2');
+    //venue's name
+    var venueName = document.createElement("h2");
     venueName.innerHTML = venue.name;
 
-    var address = document.createElement('h3');
+    //venue's address
+    var address = document.createElement("h3");
     address.innerHTML = venue.street_address;
 
-    var website = document.createElement('a');
+    //venue's website
+    var website = document.createElement("h3");
+
     website.innerHTML = venue.website_url;
     website.href = venue.website_url;
 
-
+    //append divs of a venue's info to large venue div holder
     venueHolder.appendChild(div);
     div.appendChild(venueName);
     div.appendChild(phoneNum);
