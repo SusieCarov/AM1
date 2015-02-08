@@ -78,26 +78,27 @@ function displayVenue(results){
   for (i in results.objects)
   {
     var venue = results.objects[i];
-    var div = document.createElement("div");
-    div.className = "Venue Info";
+    var div = document.createElement('div');
+    div.className = "venueInfo";
 
-    var phoneNum = document.createElement("div");
+    var phoneNum = document.createElement('div');
     phoneNum.innerHTML = venue.phone;
-    phoneNum.className = "phone number";
+    phoneNum.className = "phoneNumber";
 
-    var venueName = document.createElement("h2");
+    var venueName = document.createElement('h2');
     venueName.innerHTML = venue.name;
 
-    var address = document.createElement("h3");
+    var address = document.createElement('h3');
     address.innerHTML = venue.street_address;
 
-    var website = document.createElement("h3");
+    var website = document.createElement('a');
     website.innerHTML = venue.website_url;
+    website.href = venue.website_url;
 
 
     venueHolder.appendChild(div);
-    div.appendChild(phoneNum);
     div.appendChild(venueName);
+    div.appendChild(phoneNum);
     div.appendChild(address);
     div.appendChild(website);
   }
