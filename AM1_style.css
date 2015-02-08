@@ -17,7 +17,6 @@ h1 {
       height: 270px;
       margin: 5px;  /* set some space to other elements  */
       padding: 7px; /* set space between content and border */
-      text-align:center;
       display: inline-block;
     } 
 
@@ -45,4 +44,9 @@ p {
     display: inline-table;
     margin: 20px;
     min-height: 200px;
+}
+
+.noResults {
+    text-align: center;
+    font-size: 48px;
 }
