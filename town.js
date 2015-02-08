@@ -1,8 +1,7 @@
 var venueHolder;
 
 var apiKey = "4563ba26ae40bfc14b6f866baaaa038e6c927df7";
-var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key=" 
-            + apiKey;
+var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key=" + apiKey;
 var urlWithLocation = baseURL + "&locality=wellesley&region=ma";
 var locationButton = document.querySelector("button");
 var entriesItems = document.querySelectorAll("div.entriesItems");
@@ -14,8 +13,7 @@ locationButton.onclick = function () {
     var location = input.split(", ");
     var city = encodeURI(location[0]);
     var state = encodeURI(location[1]);
-    var url = baseURL + "&locality=" + city;
-    url += "&region=" + state;
+    var url = baseURL + "&locality=" + city + "&region=" + state;
     urlWithLocation = url;
     url += "&callback=displayVenue";
     console.log(url);
@@ -25,23 +23,15 @@ locationButton.onclick = function () {
 
 //recreationButton, beautyButton, laundryButton, Fashion, restaurant, bookstore
 entriesItems[0].onclick = function () {
-  categoryRequest("recreation");
+  categoryRequest("gym");
 }
 
 entriesItems[1].onclick = function () {
-  categoryRequest("beauty");
+  categoryRequest("spa");
 }
 
 entriesItems[2].onclick = function () {
-  categoryRequest("laundry");
-}
-
-entriesItems[3].onclick = function () {
-  categoryRequest("fashion");
-}
-
-entriesItems[4].onclick = function () {
-  categoryRequest("bookstore");
+  categoryRequest("restaurant");
 }
 
 function categoryRequest(category) {
