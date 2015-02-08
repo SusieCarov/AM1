@@ -33,10 +33,12 @@ function displayBooks(result){
   var results = JSON.parse(result);
   thingy = results.items[0]; //don't forget to take this out
 
+    
+      bookHolder = document.getElementById("searchResults");
+
   if(bookHolder) {
     bookHolder.innerHTML = "";
   }
-  bookHolder = document.getElementById("searchResults");
   for (i in results.items)
   {
     var book = results.items[i];

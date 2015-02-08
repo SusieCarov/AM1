@@ -1,68 +1,58 @@
+<!--FILE NAME: AM1.html
+    HTML CODING BY: Chimuanya Okoro, Mary Ruth Ngo, Susie Carovillano
+    CSS CODING BY: Chimuanya and Susie
+    DATE MODIFIED: 2.8.15
+    PURPOSE: This page is the main page for the Around the Town web aggregator. This web page aggregator 
+        generates a list of businesses based on the user's location. Addtionally, the user will select 
+        a button from six avaible options recreation, beauty, laundry, fashion, restaurants, and bookstores. 
+-->
+
 <!DOCTYPE html>
 <html lang="">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Is It Brie You’re Looking For?</title>
+  <title> Around the Town </title>
   <link rel="stylesheet" href="AM1_style.css">
 </head>
 
 <body>
-    <h1> Is It Brie You’re Looking For?</h1> 
- 
-    	<form> 
-                <textarea rows="1" cols="20">Enter Location </textarea>
-                <input type="submit" id="button" value="Submit">
-		</form>
+    <h1> Around the Town</h1> 
+    <div id="searchInput"> 
+        <input type="text" id="search" placeholder="Enter Location">
+        <button>Search</button>
+    </div>
     
-         <form> 
-			<textarea rows="1" cols="20">Enter Price (per person)</textarea>
-			<input type="submit" value="Submit">
-		</form>
+    <div class="entriesItems" id="recreationButton"> 
+            <h2> Recreation </h2> 
+            <img src="pics/recreation.jpg" alt="Recreation" style="height:200px;">
+    </div> 
        
-			<div class = "entriesItems"> 
-            <div id = "chinesebutton"> 
-            <h2> Chinese  </h2> 
-			<img src="pics/eggrolls.jpg" alt="a picture of Clifford" style="height:200px;">
-			</div> 
-			</div>
-    
-			<div class = "entriesItems"> 
-            <div id = "italianbutton"> 
-            <h2> Italian </h2> 
-			<img src="pics/pizza2.jpg" alt="a picture of Clifford" style="height:200px;">
-			</div>
-            </div> 
+    <div class="entriesItems" id="beautyButton"> 
+            <h2> Beauty and Spas</h2> 
+            <img src="pics/beauty.jpg" alt="Beauty and Spas" style="height:200px;">
+    </div>
 			
-			<div class = "entriesItems"> 
-             <div id = "mexicanbutton">
-            <h2> Mexican </h2> 
-			<img src="pics/tacos.jpg" alt="a picture of Clifford" style="height:200px;">
-			</div>
-            </div>
+    <div class="entriesItems" id="laundryButton">
+            <h2> Laundry</h2> 
+			<img src="pics/laundry.jpg" alt="Laundry" style="height:200px;">
+    </div>
             
-            <div class = "entriesItems"> 
-            <div id = "thaibutton">
-            <h2> Thai </h2> 
-			<img src="pics/padthai.jpg" alt="a picture of Clifford" style="height:200px;">
-			</div>
-            </div>
+    <div class="entriesItems" id="fashionButton">
+            <h2> Fashion</h2> 
+			<img src="pics/fashion.jpg" alt="Fashion" style="height:200px;">
+    </div>
 
-            <div class = "entriesItems">
-            <div id = "indianbutton">
-            <h2> Indian</h2> 
-			<img src="pics/curry.jpg" alt="a picture of Clifford" style="height:200px;">
-			</div>
-            </div>
+    <div class="entriesItems" id="restaurantButton">
+            <h2> Restaurants</h2> 
+			<img src="pics/restaurant.jpeg" alt="Restaurants" style="height:200px;">
+    </div>
                 
-            <div class = "entriesItems"> 
-            <div id = "japanesebutton">
-            <h2> Japanese</h2> 
-			<img src="pics/sushi.jpg" alt="a picture of Clifford" style="height:200px;"> 
-			</div> 
-            </div>
-
+    <div class="entriesItems" id="bookstoreButton">
+            <h2> Bookstores</h2> 
+			<img src="pics/bookstore.jpeg" alt="Bookstores" style="height:200px;"> 
+    </div>
                 
-            <script src="brie.js"></script>
+    <script src="town.js"></script>
 </body>
 </html>
