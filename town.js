@@ -1,13 +1,10 @@
-console.log("line 1");
 var venueHolder = 0;
-console.log("line 2");
 var apiKey = "4563ba26ae40bfc14b6f866baaaa038e6c927df7";
 var baseURL = "http://api.locu.com/v1_0/venue/search/?api_key=" 
             + apiKey;
 var urlWithLocation = baseURL + "&locality=wellesley&region=ma";
-console.log("hi");
 var locationButton = document.querySelector("button");
-var entriesItems = document.querySelectorAll("entriesItems");
+var entriesItems = document.querySelectorAll("div.entriesItems");
 console.log(entriesItems);
 
 locationButton.onclick = function () {
